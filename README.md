@@ -6,10 +6,11 @@ Overall, this file standard gives a much higher degree of control over how a des
 
 ### Example API
 
-For convenience, a python class that contains an basic API for interfacing with the file format has been included in the repository (see ControlFile.py). It should be easy to incorporate into a preexisting python project, however, due to the inherent variability between 3D printing setups, values in the main dictionary that relate directly to the 3D printing mechanism itself have intentionally been left undefined so that the standard can be adopted to any 3D printing mechanism
+For convenience, a python class that contains an basic API for interfacing with the file format has been included in the repository (see `ControlFile.py`). It should be easy to incorporate into a preexisting python project, however, due to the inherent variability between 3D printing setups, values in the main dictionary that relate directly to the 3D printing mechanism itself have intentionally been left undefined so that the standard can be adopted to any 3D printing mechanism
 
 ## File format and explanation
 
+This information can also be found in `example.json`
 ```
 {
   "Design": {
