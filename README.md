@@ -1,12 +1,12 @@
 # SLA 3D Printer Control File Standard
 
-The purpose of this repository is to document a standard for conveying print information to a SLA 3D printer for how to process each individual image of a print. Traditionally SLA 3D printers only expose a single image per layer. Control files following this format will allow for a layer to be comprised of multiple images, with the ability to customize what each image's exposure time is, as well as customizing each layer's thickness.
+The purpose of this repository is to document a file standard for conveying 3D print information to a SLA 3D printer for how to process each individual image of a print. Traditionally SLA 3D printers only expose a single image per layer, and have the same layer thickness for each layer. Control files following the format we outline in this repository will allow each layer to be comprised of multiple images, with the ability to customize what each image's exposure time is, as well as customizing each layer's thickness.
 
-Overall, this file standard gives a much higher degree of control over how a design is printed over traditional methods.
+Overall, following this file standard gives a much higher degree of control over how a design is printed compared to traditional 3D printing methods.
 
 ### Example API
 
-For convenience, a python class that contains an basic API for interfacing with the file format has been included in the repository (see `ControlFile.py`). It should be easy to incorporate into a preexisting python project, however, due to the inherent variability between 3D printing setups, values in the main dictionary that relate directly to the 3D printing mechanism itself have intentionally been left undefined so that the standard can be adopted to any 3D printing mechanism
+For convenience, a python class that contains a basic API for interfacing with the file format has been included in the repository (see `ControlFile.py`). It should be straightforward to incorporate into a preexisting python project, however, due to the inherent variability between 3D printer setups, values in the main dictionary that relate directly to the 3D printing mechanism itself have intentionally been left undefined so that the standard can be adapted to any 3D printing mechanism that offers the required operational flexibility.
 
 ## File format and explanation
 
