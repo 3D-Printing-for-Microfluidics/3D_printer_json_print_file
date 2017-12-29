@@ -15,7 +15,8 @@ This information can also be found in `example.json`
 {
   "Design": {
     "Purpose": "String with short statement about design's purpose.",
-    "Description": "String containing description of design to be printed with this JSON file. Could be multi-line by using '\n' to separate lines.",
+    "Description": "String containing description of design to be printed with this JSON file.
+                    Could be multi-line by using '\n' to separate lines.",
     "Resin": "Resin that this design is intended to be used with. Example: PEGDA with 2% NPS and 1% Irgacure 819.",
     "3D printer": "3D printer that this design is intended to be printed on.",
     "Design file": "<path/filename> (OpenSCAD or other 3D CAD file containing design)",
@@ -25,23 +26,22 @@ This information can also be found in `example.json`
   },
   "Header": {
     "Comment": "This section contains information about the schema and the directory where to find png files,
-    which is specified relative to the directory in which this json file resides.If the json file
-    is in the same directory as the png images, this would be `.`",
+                which is specified relative to the directory in which this json file resides. If the json file
+                is in the same directory as the png images, this would be `.`",
     "Schema version": "0.1",
     "png directory": "images",
   },
   "Printer settings": {
-    "Comment": "This section contains general printer settings. Generally speaking, this can be broken up into the settings for the optical engine,
-    the build stage and the separation mechanism.Depending on the 3 D printer,
-    some of these settings maybe part of a single mechanism which share the same settings
-    (e.g.the build stage and the separation mechanism).It is up to the user to define how partition these settings,
-    based on what makes sense for their 3 D printer. Below is an example of the general
-    case.
+    "Comment": "This section contains general printer settings. Generally speaking, this can be broken up into
+                the settings for the optical engine, the build stage and the separation mechanism. Depending on the 3D
+                printer, some of these settings maybe part of a single mechanism which share the same settings
+                (e.g.the build stage and the separation mechanism). It is up to the user to define how partition these
+                settings, based on what makes sense for their 3D printer. Below is an example of the general case.
 
-    Also these settings can be redefined on a per layer basis by defining the setting name in the specfic layer.Because there
-    is no way to define what sub category a setting belongs to inside of layer,
-    it is important that all settings have unique key names in relation to the 'Default layer settings'
-    and any of the sub categories under 'Printer settings'",
+                Also these settings can be redefined on a per layer basis by defining the setting name in the specfic
+                layer. Because there is no way to define what sub category a setting belongs to inside of layer, it is
+                important that all settings have unique key names in relation to the 'Default layer settings' and any
+                of the sub categories under 'Printer settings'",
     "Optical Engine":
       {
         "Power setting": "100",
@@ -61,12 +61,14 @@ This information can also be found in `example.json`
   },
   "Layers": {
     "Comment:": "This section contains information for each of the layers to be exposed.
-    In the example below: burn in layers 0 - 3,
-    channel in layers 7 - 9 with multiple doses,
-    channel ceiling in layers 10 - 12 with multiple doses,
-    different layer thickness and multiple doses in layers 13 - 15.
-    The idea is that general settings are specified and are used for all layers except when they are
-    overridden when a particular layer contains any of those particular settings.",
+                 In the example below the purpose of the layers is as follows:
+                 - burn in layers 0 - 3,
+                 - channel in layers 7 - 9 with multiple doses,
+                 - channel ceiling in layers 10 - 12 with multiple doses,
+                 - different layer thickness and multiple doses in layers 13 - 15.
+
+                 The idea is that general settings are specified for use in all layers except when they are
+                 overridden when a particular layer contains a redefinition of a specific setting.",
     "Default layer settings": {
       "Comment": "Unless otherwise defined in the layer, these are the values that are to be used for each layer.",
       "Layer thickness (microns)": "10",
@@ -77,7 +79,8 @@ This information can also be found in `example.json`
       "png files": ["path/filename000.png"],
       "exposure times (ms)": ["20000"],
       "custom thickness": "20",
-      "Comment": "This layer has defined a custom thickness, which will impact the distance that the build platform moves."
+      "Comment": "This layer has defined a custom thickness, which will impact the distance that the build platform
+                  moves."
     },
     "1": {
       "png files": ["path/filename000.png"],
@@ -160,7 +163,6 @@ This information can also be found in `example.json`
     }
   }
 }
-
 ```
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
