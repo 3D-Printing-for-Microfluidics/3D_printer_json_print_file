@@ -15,153 +15,197 @@ This information can also be found in `example.json`
 {
   "Design": {
     "Purpose": "String with short statement about design's purpose.",
-    "Description": "String containing description of design to be printed with this JSON file.
-                    Could be multi-line by using '\n' to separate lines.",
+    "Description": "String containing description of design to be printed with this JSON file. Could be multi-line by using '\n' to separate lines.",
     "Resin": "Resin that this design is intended to be used with. Example: PEGDA with 2% NPS and 1% Irgacure 819.",
     "3D printer": "3D printer that this design is intended to be printed on.",
-    "Design file": "<path/filename> (OpenSCAD or other 3D CAD file containing design)",
-    "STL file": "<path/filename>",
+    "Design file": "<filename> (OpenSCAD or other 3D CAD file containing design)",
+    "STL file": "<filename>",
     "Slicer": "Specify which slicer was used to create png images from STL file.",
     "Date": "Date file was sliced."
   },
   "Header": {
-    "Comment": "This section contains information about the schema and the directory where to find png files,
-                which is specified relative to the directory in which this json file resides. If the json file
-                is in the same directory as the png images, this would be `.`",
+    "Comment": "This section contains information about the schema and the directory where to find images, which is specified relative to the directory in which this json file resides. If the json file \nis in the same directory as the png images, this would be `.`",
     "Schema version": "0.1",
-    "png directory": "images",
+    "Image directory": "slices"
   },
-  "Printer settings": {
-    "Comment": "This section contains general printer settings. Generally speaking, this can be broken up into
-                the settings for the optical engine, the build stage and the separation mechanism. Depending on the 3D
-                printer, some of these settings maybe part of a single mechanism which share the same settings
-                (e.g.the build stage and the separation mechanism). It is up to the user to define how partition these
-                settings, based on what makes sense for their 3D printer. Below is an example of the general case.
-
-                Also these settings can be redefined on a per layer basis by defining the setting name in the specfic
-                layer. Because there is no way to define what sub category a setting belongs to inside of layer, it is
-                important that all settings have unique key names in relation to the 'Default layer settings' and any
-                of the sub categories under 'Printer settings'",
-    "Optical Engine":
-      {
-        "Power setting": "100",
-        ...
-        etc.
-      },
-      "Build Stage": {
-        "Movement Speed": "400",
-        ...
-        etc.
-      },
-      "Separation Mechanism": {
-        "Movement Speed": "400",
-        ...
-        etc.
-      }
+  "Default settings": {
+    "Comment": "Default settings for the Printer. Unless otherwise defined in the layer, these are the values that are to be used for each layer.",
+    "Light engine power setting": 100,
+    "Build stage movement Speed": 400,
+    "Separation mechanism movement speed": 400,
+    "Layer thickness (um)": 10,
+    "Layer exposure time (ms)": 400,
+    "Number of duplications": 1
   },
-  "Layers": {
-    "Comment:": "This section contains information for each of the layers to be exposed.
-                 In the example below the purpose of the layers is as follows:
-                 - burn in layers 0 - 3,
-                 - channel in layers 7 - 9 with multiple doses,
-                 - channel ceiling in layers 10 - 12 with multiple doses,
-                 - different layer thickness and multiple doses in layers 13 - 15.
-
-                 The idea is that general settings are specified for use in all layers except when they are
-                 overridden when a particular layer contains a redefinition of a specific setting.",
-    "Default layer settings": {
-      "Comment": "Unless otherwise defined in the layer, these are the values that are to be used for each layer.",
-      "Layer thickness (microns)": "10",
-      "Layer exposure time (ms)": "400",
-      "Number of duplications": "0"
+  "Layers": [
+    {
+      "Images": [
+        "filename000.png"
+      ],
+      "Layer exposure times (ms)": [
+        20000
+      ],
+      "Layer thickness (um)": 20,
+      "Comment": "This layer has defined a custom thickness, which will impact the distance that the build platform moves."
     },
-    "0": {
-      "png files": ["path/filename000.png"],
-      "exposure times (ms)": ["20000"],
-      "custom thickness": "20",
-      "Comment": "This layer has defined a custom thickness, which will impact the distance that the build platform
-                  moves."
-    },
-    "1": {
-      "png files": ["path/filename000.png"],
-      "exposure times (ms)": ["10000"],
-      "custom duplications": "2",
+    {
+      "Images": [
+        "filename000.png"
+      ],
+      "Layer exposure times (ms)": [
+        10000
+      ],
+      "Number of duplications": 2,
       "Comment": "This layer needs to be reproduced twice beyond the initial exposure."
     },
-    "2": {
-      "png files": ["path/filename000.png"],
-      "exposure times (ms)": ["5000"],
-      "Power Setting": "200",
+    {
+      "Images": [
+        "filename000.png"
+      ],
+      "Layer exposure times (ms)": [
+        5000
+      ],
+      "Power Setting": 200,
       "Comment": "This layer requires the LED power setting to be higher than the default."
     },
-    "3": {
-      "png files": ["path/filename000.png"],
-      "exposure times (ms)": ["1000"]
+    {
+      "Images": [
+        "filename000.png"
+      ],
+      "Layer exposure times (ms)": [
+        1000
+      ]
     },
-    "4": {
-      "png files": ["path/filename001.png"]
+    {
+      "Images": [
+        "filename001.png"
+      ]
     },
-    "5": {
-      "png files": ["path/filename002.png"]
+    {
+      "Images": [
+        "filename002.png"
+      ]
     },
-    "6": {
-      "png files": ["path/filename003.png"]
+    {
+      "Images": [
+        "filename003.png"
+      ]
     },
-    "7": {
-      "png files": ["path/filename004.png", "path/filename004a.png"],
-      "exposure times (ms)": ["400", "200"],
+    {
+      "Images": [
+        "filename004.png",
+        "filename004a.png"
+      ],
+      "Layer exposure times (ms)": [
+        400,
+        200
+      ],
       "Comment": "Channel layer 1"
     },
-    "8": {
-      "png files": ["path/filename005.png", "path/filename005a.png"],
-      "exposure times (ms)": ["400", "200"],
+    {
+      "Images": [
+        "filename005.png",
+        "filename005a.png"
+      ],
+      "Layer exposure times (ms)": [
+        400,
+        200
+      ],
       "Comment": "Channel layer 2"
     },
-    "9": {
-      "png files": ["path/filename006.png", "path/filename006a.png"],
-      "exposure times (ms)": ["400", "200"],
+    {
+      "Images": [
+        "filename006.png",
+        "filename006a.png"
+      ],
+      "Layer exposure times (ms)": [
+        400,
+        200
+      ],
       "Comment": "Channel layer 3"
     },
-    "10": {
-      "png files": ["path/filename007.png", "path/filename007a.png"],
-      "exposure times (ms)": ["400", "200"],
+    {
+      "Images": [
+        "filename007.png",
+        "filename007a.png"
+      ],
+      "Layer exposure times (ms)": [
+        400,
+        200
+      ],
       "Comment": "Channel ceiling layer 1"
     },
-    "11": {
-      "png files": ["path/filename008.png", "path/filename008a.png"],
-      "exposure times (ms)": ["400", "200"],
+    {
+      "Images": [
+        "filename008.png",
+        "filename008a.png"
+      ],
+      "Layer exposure times (ms)": [
+        400,
+        200
+      ],
       "Comment": "Channel ceiling layer 2"
     },
-    "12": {
-      "png files": ["path/filename009.png", "path/filename009a.png"],
-      "exposure times (ms)": ["400", "200"],
+    {
+      "Images": [
+        "filename009.png",
+        "filename009a.png"
+      ],
+      "Layer exposure times (ms)": [
+        400,
+        200
+      ],
       "Comment": "Channel ceiling layer 3"
     },
-    "13": {
-      "Layer thickness (microns)": "5",
-      "png files": ["path/filename010.png", "path/filename010a.png"],
-      "exposure times (ms)": ["250", "150"]
+    {
+      "Layer thickness (um)": 5,
+      "Images": [
+        "filename010.png",
+        "filename010a.png"
+      ],
+      "Layer exposure times (ms)": [
+        250,
+        150
+      ]
     },
-    "14": {
-      "Layer thickness (microns)": "7.5",
-      "png files": ["path/filename011.png", "path/filename011a.png"],
-      "exposure times (ms)": ["300", "175"]
+    {
+      "Layer thickness (um)": 7.5,
+      "Images": [
+        "filename011.png",
+        "filename011a.png"
+      ],
+      "Layer exposure times (ms)": [
+        300,
+        175
+      ]
     },
-    "15": {
-      "Layer thickness (microns)": "8",
-      "png files": ["path/filename012.png", "path/filename012a.png"],
-      "exposure times (ms)": ["350", "190"]
+    {
+      "Layer thickness (um)": 8,
+      "Images": [
+        "filename012.png",
+        "filename012a.png"
+      ],
+      "Layer exposure times (ms)": [
+        350,
+        190
+      ]
     },
-    "16": {
-      "png files": ["path/filename013.png"]
+    {
+      "Images": [
+        "filename013.png"
+      ]
     },
-    "17": {
-      "png files": ["path/filename014.png"]
+    {
+      "Images": [
+        "filename014.png"
+      ]
     },
-    "18": {
-      "png files": ["path/filename015.png"]
+    {
+      "Images": [
+        "filename015.png"
+      ]
     }
-  }
+  ]
 }
 ```
 
