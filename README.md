@@ -31,8 +31,8 @@ This information can also be found in `example.json`
   "Default settings": {
     "Comment": "Default settings for the Printer. Unless otherwise defined in the layer, these are the values that are to be used for each layer.",
     "Light engine power setting": 100,
-    "Build stage movement Speed": 400,
-    "Separation mechanism movement speed": 400,
+    "Build stage movement Speed (mm/min)": 400,
+    "Separation mechanism movement speed (mm/min)": 400,
     "Layer thickness (um)": 10,
     "Layer exposure time (ms)": 400,
     "Number of duplications": 1
