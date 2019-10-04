@@ -11,7 +11,7 @@ For convenience, a python class that contains a basic API for interfacing with t
 ## File format and explanation
 
 This information can also be found in [`print_settings.py`](https://github.com/gregnordin/3D_printer_control/blob/master/printer_server/printer_server/printer/print_settings.py)
-```
+
 Standard for Print Job
 ======================
 JSON File
