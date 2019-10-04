@@ -18,7 +18,7 @@ Standard for Print Job
 JSON File
 ---------
 
-Boilerplate
+Boilerplate  
 ^^^^^^^^^^^
 
 The JSON file contains all the information needed for a print 
@@ -56,6 +56,7 @@ all the entries are necessary.
     }
     
 **Explanation of all entries**  
+
 #. Header
     #. Schema version - for backward compatibility
     #. Image directory - relative the directory of JSON file
