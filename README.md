@@ -14,13 +14,17 @@ This information can also be found in [`print_settings.py`](https://github.com/g
 
 Standard for Print Job
 ======================
+
 JSON File
 ---------
+
 Boilerplate
 ^^^^^^^^^^^
+
 The JSON file contains all the information needed for a print 
 besides the images. Here is a most simplified version, namely, 
-all the entries are necessary. ::
+all the entries are necessary. 
+
     {
       "Header": {
         "Schema version": "0.1",
@@ -50,7 +54,8 @@ all the entries are necessary. ::
         }
       ]
     }
-**Explanation of all entries**
+    
+**Explanation of all entries**  
 #. Header
     #. Schema version - for backward compatibility
     #. Image directory - relative the directory of JSON file
@@ -67,15 +72,17 @@ all the entries are necessary. ::
 #. Layers - a list of layer settings. Each item in the list 
    is corresponding to multiple layers, when 
    ``Number of duplications`` is greater than 1.
-.. _solus_command_chain:
+   
 Solus command chain
 ^^^^^^^^^^^^^^^^^^^
+
 The Solus movement starts from right after exposure, and ends 
 right before another exposure. Here, a new API for moving build 
 platform and quartz window is introduced. With the new API, any 
 arbitrary combination of movements can be implemented by 
 chaining a list of commands. 
-**Command format examples**
+
+**Command format examples**  
 * Wait (WAIT)
     * Wait 1.5 seconds
         * ``WAIT 1.5``
@@ -89,9 +96,11 @@ chaining a list of commands.
         * ``QW UP 1.5 SPEED 500``
     * Move quartz window down 1 mm at 600 mm/min
         * ``QW DOWN 1 SPEED 600``
-**Rules**
+        
+**Rules**  
 We can almost chain commands however we want to, but there are 
 still some rules.
+
 * ``BP`` rules
     #. Speed must be positive integer.
     #. Max speed: 800 mm/min
@@ -106,17 +115,20 @@ still some rules.
        ``QW DOWN``.
     #. The quartz window absolute position should always be 
        between 0 and 6 mm. 
-.. Note::
+Note  
     Because ``BP UP`` distance is equal to ``BP DOWN`` distance, 
     there is not a new layer of resin between the printed part 
     and the teflon film. But it is taken care of by 
     Solus.printCycle method, where it automatically reduce the 
     last ``BP DOWN`` distance by the layer thickness.
+    
 JSON with extra information and customized layer settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Besides basic information, we can add detailed description under 
 other entries. This extra information does not affect the print 
-in any way. Example ::
+in any way. Example
+
     {
       "Design": {
         "Purpose": "String with short statement about design's 
