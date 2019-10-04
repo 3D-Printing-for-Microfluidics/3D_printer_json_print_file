@@ -57,20 +57,20 @@ all the entries are necessary.
     
 **Explanation of all entries**  
 
-#. Header
-    #. Schema version - for backward compatibility
-    #. Image directory - relative the directory of JSON file
-#. Default settings - Default values
-    #. Light engine power setting - an integer between 0 and 1000
-    #. Layer exposure time (ms)
-    #. Layer thickness (um)
-    #. Number of duplications - If a number of consective layers 
+1. Header
+    1. Schema version - for backward compatibility
+    1. Image directory - relative the directory of JSON file
+1. Default settings - Default values
+    1. Light engine power setting - an integer between 0 and 1000
+    1. Layer exposure time (ms)
+    1. Layer thickness (um)
+    1. Number of duplications - If a number of consective layers 
        share the same images and parameters, we can set 
        ``Number of duplications`` to reduce json file footprint.
-    #. Solus command chain - command chain 
+    1. Solus command chain - command chain 
        to tell solus how to move BP and QW. 
        (Details: :ref:`solus_command_chain`)
-#. Layers - a list of layer settings. Each item in the list 
+1. Layers - a list of layer settings. Each item in the list 
    is corresponding to multiple layers, when 
    ``Number of duplications`` is greater than 1.
    
