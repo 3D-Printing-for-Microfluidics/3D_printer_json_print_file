@@ -111,14 +111,17 @@ still some rules.
     1. The total distance of ``QW UP`` should be the same as 
        ``QW DOWN``.
     1. The quartz window absolute position should always be 
-       between 0 and 6 mm. 
-Note  
+       between 0 and 6 mm.  
+
+```
+Note   
     Because ``BP UP`` distance is equal to ``BP DOWN`` distance, 
     there is not a new layer of resin between the printed part 
     and the teflon film. But it is taken care of by 
     Solus.printCycle method, where it automatically reduce the 
     last ``BP DOWN`` distance by the layer thickness.
-    
+```
+
 ### JSON with extra information and customized layer settings
 
 Besides basic information, we can add detailed description under 
