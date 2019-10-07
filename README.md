@@ -115,11 +115,7 @@ still some rules.
 
 ```
 Note:   
-    Because BP UP distance is equal to BP DOWN distance, 
-    there is not a new layer of resin between the printed part 
-    and the teflon film. But it is taken care of by 
-    Solus.printCycle method, where it automatically reduce the 
-    last BP DOWN distance by the layer thickness.
+    Because BP UP distance is equal to BP DOWN distance, there is not a new layer of resin between the printed part and the teflon film. But it is taken care of by Solus.printCycle method, where it automatically reduce the last BP DOWN distance by the layer thickness.
 ```
 
 ### JSON with extra information and customized layer settings
@@ -308,24 +304,28 @@ To submit a print job to the 3D printer, a ZIP file is the only
 format the 3D printer accepts. This ZIP file should contain only 
 one JSON file, named ``print_settings.json``, and all the images 
 that will be used for this print job. The file structure in the 
-ZIP file should be as following ::
-     .  
-     ├── print_settings.json  
-     └── slices  
-         ├── 0000.png  
-         ├── 0001.png  
-         ├── 0002.png  
-         └── 0003.png  
-             .  
-             .  
-             .  
+ZIP file should be as following
+```
+    .  
+    ├── print_settings.json  
+    └── slices  
+        ├── 0000.png  
+        ├── 0001.png  
+        ├── 0002.png  
+        └── 0003.png  
+            .  
+            .  
+            .  
+```
 The name of the JSON file must be ``print_settings.json``, and 
 the names of the images and image folder name need to match what 
 is specified in the json file. 
-.. Note::
+```
+Note:
     After the ZIP file is extracted, the JSON file directory will 
     be used as the root directory. Image directory is relative 
     to the root directory. 
+```
 ```
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
