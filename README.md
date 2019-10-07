@@ -116,8 +116,8 @@ still some rules.
 ```
 Note:   
     Because BP UP distance is equal to BP DOWN distance, there is not a new layer of resin between the printed 
-    part and the teflon film. But it is taken care of by Solus.printCycle method, where it automatically reduce 
-    the last BP DOWN distance by the layer thickness.
+    part and the teflon film. But it is taken care of by Solus.printCycle method, where it automatically 
+    reduce the last BP DOWN distance by the layer thickness.
 ```
 
 ### JSON with extra information and customized layer settings
