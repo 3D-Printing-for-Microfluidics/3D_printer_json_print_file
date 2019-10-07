@@ -12,14 +12,11 @@ For convenience, a python class that contains a basic API for interfacing with t
 
 This information can also be found in [`print_settings.py`](https://github.com/gregnordin/3D_printer_control/blob/master/printer_server/printer_server/printer/print_settings.py)
 
-Standard for Print Job
-**********************
+# Standard for Print Job
 
-JSON File
----------
+## JSON File
 
-Boilerplate  
------------
+### Boilerplate  
 
 The JSON file contains all the information needed for a print 
 besides the images. Here is a most simplified version, namely, 
@@ -69,13 +66,12 @@ all the entries are necessary.
        ``Number of duplications`` to reduce json file footprint.
     1. Solus command chain - command chain 
        to tell solus how to move BP and QW. 
-       (Details: :ref:`solus_command_chain`)
+       (Details: *solus_command_chain*)
 1. Layers - a list of layer settings. Each item in the list 
    is corresponding to multiple layers, when 
    ``Number of duplications`` is greater than 1.
    
-Solus command chain
--------------------
+### Solus command chain
 
 The Solus movement starts from right after exposure, and ends 
 right before another exposure. Here, a new API for moving build 
@@ -103,18 +99,18 @@ We can almost chain commands however we want to, but there are
 still some rules.
 
 * ``BP`` rules
-    #. Speed must be positive integer.
-    #. Max speed: 800 mm/min
-    #. The total distance of ``BP UP`` should be the same as 
+    1. Speed must be positive integer.
+    1. Max speed: 800 mm/min
+    1. The total distance of ``BP UP`` should be the same as 
        ``BP DOWN``. 
-    #. The build platform absolute position should always be 
+    1. The build platform absolute position should always be 
        between layer position and 90 mm. 
 * ``QW`` rules
-    #. Speed must be positive integer.
-    #. Max speed: 800 mm/min
-    #. The total distance of ``QW UP`` should be the same as 
+    1. Speed must be positive integer.
+    1. Max speed: 800 mm/min
+    1. The total distance of ``QW UP`` should be the same as 
        ``QW DOWN``.
-    #. The quartz window absolute position should always be 
+    1. The quartz window absolute position should always be 
        between 0 and 6 mm. 
 Note  
     Because ``BP UP`` distance is equal to ``BP DOWN`` distance, 
@@ -123,8 +119,7 @@ Note
     Solus.printCycle method, where it automatically reduce the 
     last ``BP DOWN`` distance by the layer thickness.
     
-JSON with extra information and customized layer settings
----------------------------------------------------------
+### JSON with extra information and customized layer settings
 
 Besides basic information, we can add detailed description under 
 other entries. This extra information does not affect the print 
@@ -303,23 +298,24 @@ Also, a layer can expose however many images. For every image,
 you can set exposure times and light engine power settings, 
 repectively. If so, every image must have an exposure time. Same 
 for light engine power setting. 
-Format of A Print Job
-*********************
+
+## Format of A Print Job
+
 To submit a print job to the 3D printer, a ZIP file is the only 
 format the 3D printer accepts. This ZIP file should contain only 
 one JSON file, named ``print_settings.json``, and all the images 
 that will be used for this print job. The file structure in the 
 ZIP file should be as following ::
-    .
-    ├── print_settings.json
-    └── slices
-        ├── 0000.png
-        ├── 0001.png
-        ├── 0002.png
-        └── 0003.png
-            .
-            .
-            .
+    .  
+    ├── print_settings.json  
+    └── slices  
+        ├── 0000.png  
+        ├── 0001.png  
+        ├── 0002.png  
+        └── 0003.png  
+            .  
+            .  
+            .  
 The name of the JSON file must be ``print_settings.json``, and 
 the names of the images and image folder name need to match what 
 is specified in the json file. 
