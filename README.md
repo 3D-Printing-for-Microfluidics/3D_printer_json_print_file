@@ -115,9 +115,9 @@ still some rules.
 
 ```
 Note:   
-    Because BP UP distance is equal to BP DOWN distance, there is not a new layer of resin between the printed part 
-    and the teflon film. But it is taken care of by Solus.printCycle method, where it automatically reduce the last 
-    BP DOWN distance by the layer thickness.
+    Because BP UP distance is equal to BP DOWN distance, there is not a new layer of resin between the printed 
+    part and the teflon film. But it is taken care of by Solus.printCycle method, where it automatically reduce 
+    the last BP DOWN distance by the layer thickness.
 ```
 
 ### JSON with extra information and customized layer settings
@@ -141,8 +141,8 @@ in any way. Example
       },
       "Header": {
         "Comment": "This section contains information about the schema and the directory where to find images, 
-        			which is specified relative to the directory in which this json file resides. If the json file 
-        			is in the same directory as the png images, this would be `.`",
+        			which is specified relative to the directory in which this json file resides. If the 
+        			json file is in the same directory as the png images, this would be `.`",
         "Schema version": "0.1",
         "Image directory": "slices"
       }
