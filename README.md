@@ -114,12 +114,12 @@ still some rules.
        between 0 and 6 mm.  
 
 ```
-Note   
-    Because ``BP UP`` distance is equal to ``BP DOWN`` distance, 
+Note:   
+    Because BP UP distance is equal to BP DOWN distance, 
     there is not a new layer of resin between the printed part 
     and the teflon film. But it is taken care of by 
     Solus.printCycle method, where it automatically reduce the 
-    last ``BP DOWN`` distance by the layer thickness.
+    last BP DOWN distance by the layer thickness.
 ```
 
 ### JSON with extra information and customized layer settings
@@ -309,16 +309,16 @@ format the 3D printer accepts. This ZIP file should contain only
 one JSON file, named ``print_settings.json``, and all the images 
 that will be used for this print job. The file structure in the 
 ZIP file should be as following ::
-    .  
-    ├── print_settings.json  
-    └── slices  
-        ├── 0000.png  
-        ├── 0001.png  
-        ├── 0002.png  
-        └── 0003.png  
-            .  
-            .  
-            .  
+     .  
+     ├── print_settings.json  
+     └── slices  
+         ├── 0000.png  
+         ├── 0001.png  
+         ├── 0002.png  
+         └── 0003.png  
+             .  
+             .  
+             .  
 The name of the JSON file must be ``print_settings.json``, and 
 the names of the images and image folder name need to match what 
 is specified in the json file. 
