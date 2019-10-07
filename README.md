@@ -115,7 +115,9 @@ still some rules.
 
 ```
 Note:   
-    Because BP UP distance is equal to BP DOWN distance, there is not a new layer of resin between the printed part and the teflon film. But it is taken care of by Solus.printCycle method, where it automatically reduce the last BP DOWN distance by the layer thickness.
+    Because BP UP distance is equal to BP DOWN distance, there is not a new layer of resin between the printed part 
+    and the teflon film. But it is taken care of by Solus.printCycle method, where it automatically reduce the last 
+    BP DOWN distance by the layer thickness.
 ```
 
 ### JSON with extra information and customized layer settings
@@ -126,39 +128,27 @@ in any way. Example
 
     {
       "Design": {
-        "Purpose": "String with short statement about design's 
-                    purpose.",
-        "Description": "String containing description of design 
-                        to be printed with this JSON file. Could 
-                        be multi-line by using '\\n' to separate 
-                        lines.",
-        "Resin": "Resin that this design is intended to be used 
-                  with. Example: PEGDA with 2% NPS and 1% 
-                  Irgacure 819.",
-        "3D printer": "3D printer that this design is intended 
-                       to be printed on.",
-        "Design file": "<filename> (OpenSCAD or other 3D CAD file 
-                        containing design)",
+        "Purpose": "String with short statement about design's purpose.",
+        "Description": "String containing description of design to be printed with this JSON file. Could be 
+        				multi-line by using '\\n' to separate lines.",
+        "Resin": "Resin that this design is intended to be used with. Example: PEGDA with 2% NPS and 1% Irgacure 
+        		  819.",
+        "3D printer": "3D printer that this design is intended to be printed on.",
+        "Design file": "<filename> (OpenSCAD or other 3D CAD file containing design)",
         "STL file": "<filename>",
-        "Slicer": "Specify which slicer was used to create png 
-                   images from STL file.",
+        "Slicer": "Specify which slicer was used to create png images from STL file.",
         "Date": "Date file was sliced."
       },
       "Header": {
-        "Comment": "This section contains information about the 
-                    schema and the directory where to find images, 
-                    which is specified relative to the directory 
-                    in which this json file resides. If the json 
-                    file is in the same directory as the png 
-                    images, this would be `.`",
+        "Comment": "This section contains information about the schema and the directory where to find images, 
+        			which is specified relative to the directory in which this json file resides. If the json file 
+        			is in the same directory as the png images, this would be `.`",
         "Schema version": "0.1",
         "Image directory": "slices"
       }
       "Default settings": {
-        "Comment": "Default settings for the Printer. Unless 
-                    otherwise defined in the layer, these are 
-                    the values that are to be used for each 
-                    layer.",
+        "Comment": "Default settings for the Printer. Unless otherwise defined in the layer, these are the values 
+        			that are to be used for each layer.",
         "Light engine power setting": 100,
         "Layer exposure time (ms)": 400,
         "Layer thickness (um)": 10,
@@ -183,8 +173,7 @@ in any way. Example
             20000
           ],
           "Layer thickness (um)": 20,
-          "Comment": "This layer has a custom exposure time and 
-                      layer thickness."
+          "Comment": "This layer has a custom exposure time and layer thickness."
         },
         {
           "Images": [
@@ -194,8 +183,7 @@ in any way. Example
             10000
           ],
           "Number of duplications": 2,
-          "Comment": "This layer is duplicated twice, which means 
-                      it is actually for layer 2 and 3."
+          "Comment": "This layer is duplicated twice, which means it is actually for layer 2 and 3."
         },
         {
           "Images": [
@@ -207,16 +195,14 @@ in any way. Example
           "Light engine power setting": [
             200
           ],
-          "Comment": "This layer has custom light engine power 
-                      setting."
+          "Comment": "This layer has custom light engine power setting."
         },
         {
           "Images": [
             "0001.png",
             "0001a.png"
           ],
-          "Comment": "This layer exposes 2 images using default 
-                      settings."
+          "Comment": "This layer exposes 2 images using default settings."
         },
         {
           "Images": [
@@ -227,8 +213,7 @@ in any way. Example
             400,
             200
           ],
-          "Comment": "This layer exposes 2 images with different 
-                      exposure times."
+          "Comment": "This layer exposes 2 images with different exposure times."
         },
         {
           "Images": [
@@ -239,8 +224,7 @@ in any way. Example
             200,
             400,
           ],
-          "Comment": "This layer exposes 2 images with different 
-                      light engine power settings."
+          "Comment": "This layer exposes 2 images with different light engine power settings."
         },
         {
           "Images": [
@@ -255,9 +239,7 @@ in any way. Example
             200,
             400,
           ],
-          "Comment": "This layer exposes 2 images with different 
-                      exposure times and light engine power 
-                      settings."
+          "Comment": "This layer exposes 2 images with different exposure times and light engine power settings."
         },
         {
           "Images": [
@@ -272,8 +254,7 @@ in any way. Example
             "BP DOWN 3 SPEED 400",
             "WAIT 1.5"
           ],
-          "Comment": "The layer has its own command chain to 
-                      control Solus."
+          "Comment": "The layer has its own command chain to control Solus."
         },
         {
           "Images": [
@@ -322,10 +303,12 @@ the names of the images and image folder name need to match what
 is specified in the json file. 
 ```
 Note:
-    After the ZIP file is extracted, the JSON file directory will 
-    be used as the root directory. Image directory is relative 
-    to the root directory. 
+    After the ZIP file is extracted, the JSON file directory will be used as the root directory. Image directory 
+    is relative to the root directory. 
 ```
 ```
 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" 
+style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed 
+under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 
+International License</a>.
