@@ -13,13 +13,13 @@ For convenience, a python class that contains a basic API for interfacing with t
 This information can also be found in [`print_settings.py`](https://github.com/gregnordin/3D_printer_control/blob/master/printer_server/printer_server/printer/print_settings.py)
 
 Standard for Print Job
-======================
+**********************
 
 JSON File
 ---------
 
 Boilerplate  
-***********
+-----------
 
 The JSON file contains all the information needed for a print 
 besides the images. Here is a most simplified version, namely, 
@@ -75,7 +75,7 @@ all the entries are necessary.
    ``Number of duplications`` is greater than 1.
    
 Solus command chain
-*******************
+-------------------
 
 The Solus movement starts from right after exposure, and ends 
 right before another exposure. Here, a new API for moving build 
@@ -124,7 +124,7 @@ Note
     last ``BP DOWN`` distance by the layer thickness.
     
 JSON with extra information and customized layer settings
-*********************************************************
+---------------------------------------------------------
 
 Besides basic information, we can add detailed description under 
 other entries. This extra information does not affect the print 
@@ -304,7 +304,7 @@ you can set exposure times and light engine power settings,
 repectively. If so, every image must have an exposure time. Same 
 for light engine power setting. 
 Format of A Print Job
----------------------
+*********************
 To submit a print job to the 3D printer, a ZIP file is the only 
 format the 3D printer accepts. This ZIP file should contain only 
 one JSON file, named ``print_settings.json``, and all the images 
