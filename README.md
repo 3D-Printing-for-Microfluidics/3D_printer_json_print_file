@@ -19,7 +19,7 @@ JSON File
 ---------
 
 Boilerplate  
-^^^^^^^^^^^
+***********
 
 The JSON file contains all the information needed for a print 
 besides the images. Here is a most simplified version, namely, 
@@ -75,7 +75,7 @@ all the entries are necessary.
    ``Number of duplications`` is greater than 1.
    
 Solus command chain
-^^^^^^^^^^^^^^^^^^^
+*******************
 
 The Solus movement starts from right after exposure, and ends 
 right before another exposure. Here, a new API for moving build 
@@ -124,7 +124,7 @@ Note
     last ``BP DOWN`` distance by the layer thickness.
     
 JSON with extra information and customized layer settings
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*********************************************************
 
 Besides basic information, we can add detailed description under 
 other entries. This extra information does not affect the print 
