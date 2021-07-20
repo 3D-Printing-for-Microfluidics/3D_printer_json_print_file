@@ -207,27 +207,23 @@ Note: A `"Comment"` tag can be put into any object and it will be ignored.
                 ]
             },
             {
-                "Comment": "Use 4 images for this layer, each with their own exposure time and overriden focus positions",
+                "Comment": "Use 4 images for this layer, each with their own exposure time",
                 "Image settings list": [
                     {
                         "Image file": "0053.png",
                         "Layer exposure time (ms)": 400,
-                        "Relative focus position (um)": 5
                     },
                     {
                         "Image file": "0053a.png",
                         "Layer exposure time (ms)": 200,
-                        "Relative focus position (um)": 10
                     },
                     {
                         "Image file": "0053b.png",
                         "Layer exposure time (ms)": 100,
-                        "Relative focus position (um)": 20
                     },
                     {
                         "Image file": "0053c.png",
                         "Layer exposure time (ms)": 200,
-                        "Relative focus position (um)": 5
                     }
                 ]
             },
