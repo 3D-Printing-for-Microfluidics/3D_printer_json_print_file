@@ -1,0 +1,415 @@
+{
+  "valid_schema_versions": [
+    "v2",
+    "v3",
+    "v5",
+    "v999"
+  ],
+  "calibration_prints": [
+    "Focus Sweep Print",
+    "Grayscale Calibration",
+    "Keyence Tip Tilt Calibration",
+    "Tip Tilt Focus Sweep Print",
+    "Uniform Focus Print",
+    "Stitching Alignment Print"
+  ],
+  "external_control": {},
+  "coord_systems": {
+    "global": {
+      "X": 0,
+      "Y": 0,
+      "Focus": 0
+    },
+    "parked": {
+      "X": -66.088,
+      "Y": -160.0,
+      "Focus": -5.0
+    },
+    "visitech": {
+      "X": -68.088,
+      "Y": -269.9,
+      "Focus": -3.0
+    },
+    "keyence_visitech": {
+      "X": -73.088,
+      "Y": -77.5,
+      "Focus": -2.0
+    },
+    "fiber_visitech": {
+      "X": -68.158,
+      "Y": -189.000,
+      "Focus": -4.0
+    }
+  },
+  "stages": {
+    "bp_stage": "galil",
+    "focus_stage": "kdc101_ttrf",
+    "xy_stage": "lts_xy",
+    "ttr_stage": "kdc101_ttrf"
+  },
+  "galil": {
+    "dummy": false,
+    "controller_name": "DMC4040",
+    "address": "192.168.0.9",
+    "default_axis": "D",
+    "axes": [
+      "D"
+    ],
+    "axes_common_names": [
+      "Build Platform"
+    ],
+    "axes_travel": {
+      "D": 100
+    },
+    "axes_ctspmm": {
+      "D": 51200
+    },
+    "axes_tolerance_um": {
+      "D": 0.125
+    },
+    "axes_speed": {
+      "D": 25
+    },
+    "axes_acceleration": {
+      "D": 50
+    },
+    "mirroring": {
+      "D": true
+    },
+    "limits": {
+      "D": [
+        -47.0,
+        null
+      ]
+    },
+    "calibration_limits": {
+      "D": [
+        0,
+        null
+      ]
+    },
+    "top_position": 50,
+    "calibration_position": 0,
+    "bottom_position": -34.3
+  },
+  "lts_xy": {
+    "dummy": false,
+    "default_axis": "Y",
+    "vendor_ids": {
+      "X": 1027,
+      "Y": 1027
+    },
+    "product_ids": {
+      "X": 64240,
+      "Y": 64240
+    },
+    "serial_numbers": {
+      "X": "45526354",
+      "Y": "45515754"
+    },
+    "baudrates": {
+      "X": 115200,
+      "Y": 115200
+    },
+    "axes": [
+      "X",
+      "Y"
+    ],
+    "axes_common_names": [
+      "X",
+      "Y"
+    ],
+    "axes_travel": {
+      "X": 150.0,
+      "Y": 300.0
+    },
+    "axes_ctspmm": {
+      "X": 409600.0,
+      "Y": 409600.0
+    },
+    "axes_ctspmms": {
+      "X": 21987328.0,
+      "Y": 21987328.0
+    },
+    "axes_ctspmmss": {
+      "X": 4506.0,
+      "Y": 4506.0
+    },
+    "axes_speed": {
+      "X": 10.0,
+      "Y": 10.0
+    },
+    "axes_acceleration": {
+      "X": 10.0,
+      "Y": 10.0
+    },
+    "axes_homing_speed": {
+      "X": 5.0,
+      "Y": 5.0
+    },
+    "axes_homing_timeout": {
+      "X": 60.0,
+      "Y": 60.0
+    },
+    "axes_timeout": {
+      "X": 40.0,
+      "Y": 40.0
+    },
+    "mirroring": {
+      "X": true,
+      "Y": true
+    },
+    "limits": {
+      "X": [
+        -90.0,
+        0
+      ],
+      "Y": [
+        -285.0,
+        0
+      ]
+    }
+  },
+  "kdc101_ttrf": {
+    "dummy": false,
+    "default_axis": "Focus",
+    "vendor_ids": {
+      "Tip": 1027,
+      "Tilt": 1027,
+      "Focus": 1027
+    },
+    "product_ids": {
+      "Tip": 64240,
+      "Tilt": 64240,
+      "Focus": 64240
+    },
+    "serial_numbers": {
+      "Tip": "27254763",
+      "Tilt": "27254658",
+      "Focus": "27270358"
+    },
+    "baudrates": {
+      "Tip": 115200,
+      "Tilt": 115200,
+      "Focus": 115200
+    },
+    "axes": [
+      "Tip",
+      "Tilt",
+      "Focus"
+    ],
+    "axes_common_names": [
+      "Tip",
+      "Tilt",
+      "Focus"
+    ],
+    "axes_travel": {
+      "Tip": 12.0,
+      "Tilt": 12.0,
+      "Focus": 25.0
+    },
+    "axes_ctspmm": {
+      "Tip": 34554.96,
+      "Tilt": 34554.96,
+      "Focus": 34554.96
+    },
+    "axes_ctspmms": {
+      "Tip": 772981.3692,
+      "Tilt": 772981.3692,
+      "Focus": 772981.3692
+    },
+    "axes_ctspmmss": {
+      "Tip": 263.8443072,
+      "Tilt": 263.8443072,
+      "Focus": 263.8443072
+    },
+    "axes_speed": {
+      "Tip": 0.5,
+      "Tilt": 0.5,
+      "Focus": 1.0
+    },
+    "axes_acceleration": {
+      "Tip": 0.5,
+      "Tilt": 0.5,
+      "Focus": 1.0
+    },
+    "axes_homing_speed": {
+      "Tip": 1.0,
+      "Tilt": 1.0,
+      "Focus": 1.0
+    },
+    "axes_homing_timeout": {
+      "Tip": 60.0,
+      "Tilt": 60.0,
+      "Focus": 60.0
+    },
+    "axes_timeout": {
+      "Tip": 20.0,
+      "Tilt": 20.0,
+      "Focus": 20.0
+    },
+    "mirroring": {
+      "Tip": false,
+      "Tilt": false,
+      "Focus": true
+    },
+    "limits": {
+      "Tip": [
+        0,
+        6.55
+      ],
+      "Tilt": [
+        0,
+        6.55
+      ],
+      "Focus": [
+        -10.0,
+        0
+      ]
+    },
+    "moving_shifts_image": false,
+    "auto_repositioning": true,
+    "auto_tip_tilt": true,
+    "link_focus_and_y_movement": true
+  },
+  "gpio": {
+    "dummy": false,
+    "power_status_pin": 17
+  },
+  "loadcell": {
+    "dummy": false,
+    "vendor_id": 5824,
+    "product_id": 1155,
+    "serial_number": "5745280",
+    "firmware_path": "loadcell/loadcell.ino",
+    "microcontroller": "Teensy3.2",
+    "baudrate": 115200,
+    "sample_period_us": 1000,
+    "calibration_intercept": 32160.0,
+    "calibration_slope": -2.064,
+    "loadcell_planarization_enabled": true,
+    "loadcell_planarization_force": 35.0,
+    "loadcell_print_start_force": 5.0
+  },
+  "planarization": {
+    "dummy": false,
+    "vendor_id": 5824,
+    "product_id": 1155,
+    "serial_number": "17767660",
+    "firmware_path": "planarization/planarization.ino",
+    "microcontroller": "Teensy4.0",
+    "baudrate": 115200,
+    "target_torque_kgmm": 80,
+    "tighten_delay_ms": 1000,
+    "motor_timeout_ms": 7500
+  },
+  "keyence": {
+    "dummy": false,
+    "address": "192.168.0.15",
+    "port": 24685,
+    "sensors": {
+      "visitech": {
+        "measurement_index": 0,
+        "invert_sign": false
+      }
+    },
+    "auto_focus_with_keyence": true,
+    "direct_focal_measurement": false
+  },
+  "mks": {
+        "dummy": false,
+        "vendor_id": 1027,
+        "product_id": 24577,
+        "serial_number": "A9AOVRT7",
+        "baudrate": 115200,
+        "address": "253",
+        "atm pressure": 650,
+        "target": [
+            1,
+            0.02
+        ],
+        "relays": {
+            "crane": {
+                "relay_num": 1,
+                "mode": "auto",
+                "direction": "ABOVE",
+                "setpoint": 640,
+                "hysterisis": 570
+            },
+            "vacuum_pump": {
+                "relay_num": 2,
+                "mode": "manual"
+            }
+        }
+    },
+    "mks_teensy": {
+        "dummy": false,
+        "vendor_id": 5824,
+        "product_id": 1155,
+        "serial_number": "16035730",
+        "firmware_path": "MKS_teensy/MKS_teensy.ino",
+        "microcontroller": "Teensy4.0",
+        "baudrate": 9600,
+        "relays": [
+            "valve_vent2",
+            "valve_pump2",
+            "valve_vacuum",
+            "valve_pump1",
+            "valve_vent1",
+            "stirring"
+        ]
+    },
+  "photodiode": {
+    "dummy": false,
+    "beam_diameter": 0.05,
+    "default_wavelength": 365,
+    "attenuation_db": 0,
+    "default_number_of_averages": 64,
+    "vendor_id": 4883,
+    "product_id": 32882,
+    "serial_number": "M01239335"
+  },
+  "light_engines": [
+        "visitech",
+        "wintech"
+    ],
+    "visitech": {
+        "dummy": false,
+        "virtual_screen": true,
+        "address": "192.168.0.10",
+        "port": 5000,
+        "dual_led": true,
+        "leds_nm": [
+            405,
+            365
+        ],
+        "resolution": [
+            2560,
+            1600
+        ],
+        "orientation": "X",
+        "mirror_long_axis": false,
+        "mirror_short_axis": false,
+        "grayscale_correction_image": [
+          "OS1v0_corrected_20250905_140900.png",
+          "OS1v0_corrected_20250905_140900.png"
+        ]
+    },
+    "wintech": {
+        "dummy": false,
+        "virtual_screen": true,
+        "vendor_id": "0x0451",
+        "product_id": "0xC900",
+        "dual_led": false,
+        "leds_nm": [
+            365
+        ],
+        "resolution": [
+            1920,
+            1080
+        ],
+        "orientation": "X",
+        "mirror_long_axis": false,
+        "mirror_short_axis": false
+    }
+}
