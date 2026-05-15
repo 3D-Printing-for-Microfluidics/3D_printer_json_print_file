@@ -43,7 +43,9 @@ Time units are milliseconds.
 Layer thickness is in microns.
 All other distance, velocity, and acceleration units are mm, mm/s, and mm/s<sup>2</sup>.
 
-## Minimal format
+Schema versions are now in the 5.x line. The examples below are updated to reflect the v5 structure and new features.
+
+## Minimal format (v5)
 
 The following JSON file represent the minimal content to specify a 3D print. **ALL FIELDS ARE REQUIRED.**
 
@@ -53,7 +55,7 @@ For this minimal case, **all layers have the same position and exposure paramete
 
     {
         "Header": {
-            "Schema version": "0.2",
+            "Schema version": "5.0.0",
             "Image directory": "slices"
         },
         "Default layer settings": {
@@ -72,6 +74,8 @@ For this minimal case, **all layers have the same position and exposure paramete
             "Image settings": {
                 "Image file": "0000.png",
                 "Layer exposure time (ms)": 550,
+                "Light engine": "visitech",
+                "Light engine wavelength (nm)": 365,
                 "Light engine power setting": 100,
                 "Relative focus position (um)": 0,
                 "Wait before exposure (ms)": 0,
@@ -149,8 +153,17 @@ Note: A `"Comment"` tag can be put into any object and it will be ignored.
 
     {
         "Header": {
-            "Schema version": "0.2",
+            "Schema version": "5.0.0",
             "Image directory": "slices"
+        },
+        "Design": {
+            "User": "Jane Doe",
+            "Purpose": "Test coupon",
+            "Description": "Multi-exposure layer with new schema fields"
+        },
+        "Variables": {
+            "base_exposure_ms": 500,
+            "post_wait_ms": 100
         },
         "Default layer settings": {
             "Number of duplications": 1,
@@ -167,11 +180,24 @@ Note: A `"Comment"` tag can be put into any object and it will be ignored.
             },
             "Image settings": {
                 "Image file": "default_image.png",
-                "Layer exposure time (ms)": 550,
-                "Light engine power setting": 100,
+                "Layer exposure time (ms)": "${base_exposure_ms}",
+                "Light engine": "visitech",
+                "Light engine wavelength (nm)": 365,
+                "Light engine power setting": 100
                 "Relative focus position (um)": 0,
                 "Wait before exposure (ms)": 0,
-                "Wait after exposure (ms)": 0
+                "Wait after exposure (ms)": "${post_wait_ms}"
+            }
+        },
+        "Named position settings": {
+            "fast_peel": {
+                "BP up speed (mm/sec)": 40,
+                "BP down speed (mm/sec)": 30
+            }
+        },
+        "Named image settings": {
+            "high_power": {
+                "Light engine power setting": 250
             }
         },
         "Layers": [
@@ -184,22 +210,26 @@ Note: A `"Comment"` tag can be put into any object and it will be ignored.
                 "Image settings list": [
                     {
                         "Image file": "0000.png",
-                        "Layer exposure time (ms)": 20000
+                        "Layer exposure time (ms)": 10000
                     }
                 ]
             },
             {
-                "Comment": "Override exposure time",
+                "Comment": "Override exposure time and use a named image preset",
                 "Image settings list": [
                     {
+                        "Using named image settings": "high_power",
                         "Image file": "0001.png",
                         "Layer exposure time (ms)": 5000
                     }
                 ]
             },
             {
-                "Comment": "Override number of duplications",
+                "Comment": "Override number of duplications and use named position settings",
                 "Number of duplications": 50,
+                "Position settings": {
+                    "Using named position settings": "fast_peel"
+                },
                 "Image settings list": [
                     {
                         "Image file": "0002.png"
@@ -207,23 +237,31 @@ Note: A `"Comment"` tag can be put into any object and it will be ignored.
                 ]
             },
             {
-                "Comment": "Use 4 images for this layer, each with their own exposure time",
+                "Comment": "Use 4 images for this layer, with x/y offsets",
                 "Image settings list": [
                     {
                         "Image file": "0053.png",
                         "Layer exposure time (ms)": 400,
+                        "Image x offset (um)": 0,
+                        "Image y offset (um)": 0,
                     },
                     {
                         "Image file": "0053a.png",
                         "Layer exposure time (ms)": 200,
+                        "Image x offset (um)": 2500,
+                        "Image y offset (um)": 0
                     },
                     {
                         "Image file": "0053b.png",
                         "Layer exposure time (ms)": 100,
+                        "Image x offset (um)": 0,
+                        "Image y offset (um)": 2500
                     },
                     {
                         "Image file": "0053c.png",
                         "Layer exposure time (ms)": 200,
+                        "Image x offset (um)": 2500,
+                        "Image y offset (um)": 2500
                     }
                 ]
             },
@@ -247,7 +285,13 @@ Note: A `"Comment"` tag can be put into any object and it will be ignored.
                 "Image settings list": [
                     {
                         "Image file": "0054.png",
-                        "Layer exposure time (ms)": 400
+                        "Layer exposure time (ms)": 400,
+                        "Special image techniques": {
+                            "0 um layer": {
+                                "Enable 0 um layer": true,
+                                "Number of duplications": 2
+                            }
+                        }
                     },
                     {
                         "Image file": "0054b.png",
@@ -305,6 +349,170 @@ Note: A `"Comment"` tag can be put into any object and it will be ignored.
             }
         ]
     }
+
+## New JSON v5.0 features and how to use them
+
+### Design metadata
+Add design provenance and context (including the newly added `User` field):
+
+    "Design": {
+        "User": "Jane Doe",
+        "Purpose": "Prototype",
+        "Description": "Bioresorbable scaffold",
+        "Resin": "PEGDA",
+        "3D printer": "HR5",
+        "Design file": "<filepath>",
+        "STL file": "<filepath>",
+        "Slicer": "Custom",
+        "Date": "2026-01-16"
+    }
+
+### Variables
+Define variables in the top-level `Variables` object and reference them anywhere in the file using `${var_name}`. These can be integers, float, booleans, or strings. If variable is numerical, math can be preformed inside the reference `${var_name * 2}`:
+
+    "Variables": {
+        "base_exposure_ms": 550,
+        "focus_offset_um": -10
+    }
+
+    "Image settings": {
+        "Layer exposure time (ms)": "${base_exposure_ms}",
+        "Relative focus position (um)": "${focus_offset_um}"
+    }
+
+### Named settings and named defaults
+Define reusable settings and reference them by name:
+
+**Precedence (highest to lowest)**
+
+- **Image settings:** per-exposure overrides in `Image settings list` → `Using named image settings` → `Using named default image settings` (layer-level) → `Default layer settings` → schema defaults.
+- **Position settings:** per-layer overrides in `Position settings` → `Using named position settings` → `Default layer settings` → schema defaults.
+
+```
+    "Named position settings": {
+        "fast_peel": {
+            "BP up speed (mm/sec)": 40,
+            "BP down speed (mm/sec)": 30
+        }
+    }
+
+    "Named image settings": {
+        "defocus": {
+            "Relative focus position (um)": 100
+        },
+        "low exposure": {
+            "Layer exposure time (ms)": 200
+        }
+    }
+
+    "Layers": [
+        {
+            "Position settings": {
+                "Using named position settings": "fast_peel"
+            },
+            "Using named default image settings": "defocus",
+            "Image settings list": [
+                {"Image file": "0001.png"},
+                {
+                    "Image file": "0002.png",
+                    "Using named image settings": "low exposure"
+                },
+            ]
+        }
+    ]
+```
+
+### Named layer groups (with variable overrides)
+Define a layer sequence once and reuse it in `Layers`. You can override global `Variables` per group call:
+
+    "Named layer groups": {
+        "base_stack": [
+            {"Image settings list": [{"Image file": "base_000.png"}]},
+            {"Image settings list": [{"Image file": "base_001.png"}]}
+        ]
+    },
+
+    "Layers": [
+        {
+            "Using named layer group": "base_stack",
+            "Variables": {"base_exposure_ms": 700}
+        }
+    ]
+
+### Special techniques
+Special techniques are available at the print, layer, and image levels:
+
+    "Special print techniques": {
+        "Print under vacuum": {
+            "Enable vacuum": true,
+            "Target vacuum level (Torr)": 10,
+            "Vacuum wait time (sec)": 30
+        }
+    }
+
+    "Position settings": {
+        "Special layer techniques": {
+            "Squeeze out resin": {
+                "Enable squeeze": true,
+                "Squeeze count": 2,
+                "Squeeze force (N)": 40,
+                "Squeeze time (ms)": 200
+            }
+        }
+    }
+
+    "Image settings list": [
+        {
+            "Image file": "0200.png",
+            "Special image techniques": {
+                "0 um layer": {
+                    "Enable 0 um layer": true,
+                    "Number of duplications": 3
+                },
+                "Print on film": {
+                    "Enable print on film": true,
+                    "Distance up (mm)": 0.3,
+                    "Wait before exposure (ms)": 20000
+                }
+            }
+        }
+    ]
+
+### Multiple light engines and wavelengths
+Each exposure can target a specific engine and wavelength:
+
+    "Image settings list": [
+        {
+            "Image file": "0300.png",
+            "Light engine": "visitech",
+            "Light engine wavelength (nm)": 405
+        },
+        {
+            "Image file": "0301.png",
+            "Light engine": "wintech",
+            "Light engine wavelength (nm)": 365
+        }
+    ]
+
+### X/Y stages, stitching, grayscale correction, and mirroring
+Use x/y offsets per exposure to enable stitching or scanning, and enable grayscale correction per image:
+
+    "Image settings list": [
+        {
+            "Image file": "0400.png",
+            "Image x offset (um)": 0,
+            "Image y offset (um)": 0,
+            "Do grayscale correction": true,
+            "Mirror image short axis": false,
+            "Mirror image long axis": false
+        },
+        {
+            "Image file": "0400.png",
+            "Image x offset (um)": 2500,
+            "Image y offset (um)": 0,
+            "Do grayscale correction": true
+        }
+    ]
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style=" border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
